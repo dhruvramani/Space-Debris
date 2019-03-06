@@ -5,7 +5,7 @@ import numpy as np
 from torch.utils.data import Dataset, DataLoader
 
 class DebrisDataset(Dataset):
-    def __init__(self, root_dir='/home/nevronas/dataset/space-debris', n_rows, steps, transform=None):
+    def __init__(self, n_rows, steps, root_dir='/home/nevronas/dataset/space-debris', transform=None):
         self.root_dir = root_dir
         self.n_rows = n_rows
         self.steps = steps   
@@ -69,7 +69,7 @@ class DebrisDataset(Dataset):
         return sample
 
 
-transformed_dataset = DebrisDataset(root_dir='Dataset', n_rows=30, steps= 10, transform=None)
+transformed_dataset = DebrisDataset(n_rows=30, steps= 10)
 #dataloader = DataLoader(transformed_dataset, batch_size=4, shuffle=True, num_workers=4)
 
 print("len:" + str(len(transformed_dataset)))
