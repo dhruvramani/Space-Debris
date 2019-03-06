@@ -63,17 +63,18 @@ class DebrisDataset(Dataset):
 
     def __getitem__(self, idx):
         debris_name = self.names[idx]
-        sample = np.array(self.elem[debris_name])
-        sample = sample[0 : self.steps]
+        sample = np.array(self.elem[debris_name]).astype(np.float32)
+        sequence = sample[0 : self.steps]
+        predictions = sample[self.steps : self.steps + 1]
+        return sequence, predictions
 
-        return sample.astype(np.float32)
 
+if __name__ == '__main__':
+    transformed_dataset = DebrisDataset(n_rows=30, steps= 10)
+    #dataloader = DataLoader(transformed_dataset, batch_size=4, shuffle=True, num_workers=4)
 
-transformed_dataset = DebrisDataset(n_rows=30, steps= 10)
-#dataloader = DataLoader(transformed_dataset, batch_size=4, shuffle=True, num_workers=4)
-
-print("len:" + str(len(transformed_dataset)))
-for i in range(len(transformed_dataset)):
-    sample = transformed_dataset[i]
-    print(sample)
-    break
+    print("len:" + str(len(transformed_dataset)))
+    for i in range(len(transformed_dataset)):
+        sequence, predictions = transformed_dataset[i]
+        print(sequence, predictions )
+        break
