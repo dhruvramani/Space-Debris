@@ -6,9 +6,10 @@ import numpy as np
 import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.backends.cudnn as cudnn
+from torch.utils.data import DataLoader
 
 from models import *
-from dataset import SpaceDataset
+from dataset import DebrisDataset
 from utils import progress_bar
 
 parser = argparse.ArgumentParser(description='PyTorch Space Orbital Path Prediction')
@@ -48,14 +49,14 @@ if(args.resume):
 def train(epoch):
     global step
     print('==> Preparing data..')
-    dataset = SpaceDataset('/home/nevronas/dataset/')
+    dataset = DebrisDataset(n_rows=30, steps= 10)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
     dataloader = iter(dataloader)
 
     print('\n=> Loss Epoch: {}'.format(epoch))
     train_loss, total = 0, 0
     params = list(net.parameters())
-    optimizer = torch.optim.Adam(params, lr=args.loss_lr, weight_decay=args.decay)
+    optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.decay)
     
     for i in range(step, len(dataloader)):
         (sequences, predictions) = next(dataloader)

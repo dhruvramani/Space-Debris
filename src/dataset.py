@@ -65,6 +65,7 @@ class DebrisDataset(Dataset):
         debris_name = self.names[idx]
         sample = np.array(self.elem[debris_name]).astype(np.float32)
         sequence = sample[0 : self.steps]
+        
         predictions = sample[self.steps : self.steps + 1]
         return sequence, predictions
 
