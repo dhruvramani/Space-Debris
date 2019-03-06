@@ -1,4 +1,4 @@
-mport torch
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
@@ -22,6 +22,7 @@ class DebrisDataset(Dataset):
                 self.lines = myfile.readlines()
             
             self.lines = np.reshape(self.lines, (-1,2))
+            print(self.lines[0], self.lines[1])
 #            print(self.lines.shape)
             
             for line in self.lines:
