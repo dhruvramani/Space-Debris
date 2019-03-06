@@ -5,7 +5,7 @@ import numpy as np
 from torch.utils.data import Dataset, DataLoader
 
 class DebrisDataset(Dataset):
-    def __init__(self, root_dir, n_rows, steps, transform=None):
+    def __init__(self, root_dir='/home/nevronas/dataset/space-debris', n_rows, steps, transform=None):
         self.root_dir = root_dir
         self.n_rows = n_rows
         self.steps = steps   
@@ -15,7 +15,7 @@ class DebrisDataset(Dataset):
 
         str1 = "" 
         for i in range(1,self.n_rows):
-            str1 = "0"+str(i) if i < 10 else str(i)
+            str1 = "0" + str(i) if i < 10 else str(i)
             str1 = self.root_dir + "/jan/file" + str1 + ".txt"
 
             with open(str1, 'r') as myfile:
