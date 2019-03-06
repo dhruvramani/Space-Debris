@@ -71,7 +71,7 @@ class DebrisDataset(Dataset):
 
 if __name__ == '__main__':
     transformed_dataset = DebrisDataset(n_rows=30, steps= 10)
-    dataloader = DataLoader(transformed_dataset, batch_size=4, shuffle=True, num_workers=4)
+    dataloader = DataLoader(transformed_dataset, batch_size=128, shuffle=True, num_workers=1)
     dataloader = iter(dataloader)
     for i in range(0, len(dataloader)):
         (sequences, predictions) = next(dataloader)
