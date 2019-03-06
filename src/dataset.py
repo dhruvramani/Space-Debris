@@ -65,9 +65,8 @@ class DebrisDataset(Dataset):
         debris_name = self.names[idx]
         sample = np.array(self.elem[debris_name])
         sample = sample[0:self.steps]
-        
 
-        return sample
+        return sample.astype(np.float32)
 
 
 transformed_dataset = DebrisDataset(n_rows=30, steps= 10)
