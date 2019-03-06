@@ -14,15 +14,16 @@ class DebrisDataset(Dataset):
         self.names = []
 
         str1 = "" 
-        for i in range(1,self.n_rows):
+        for i in range(1, self.n_rows):
             str1 = "0" + str(i) if i < 10 else str(i)
             str1 = self.root_dir + "/jan/file" + str1 + ".txt"
 
             with open(str1, 'r') as myfile:
                 self.lines = myfile.readlines()
             
+            #print(self.lines[0])
             self.lines = np.reshape(self.lines, (-1,2))
-            print(self.lines[0], self.lines[1])
+            #print(self.lines[0])
 #            print(self.lines.shape)
             
             for line in self.lines:
@@ -75,3 +76,4 @@ transformed_dataset = DebrisDataset(n_rows=30, steps= 10)
 print("len:" + str(len(transformed_dataset)))
 for i in range(len(transformed_dataset)):
     sample = transformed_dataset[i]
+    break
