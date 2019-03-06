@@ -76,4 +76,5 @@ transformed_dataset = DebrisDataset(n_rows=30, steps= 10)
 print("len:" + str(len(transformed_dataset)))
 for i in range(len(transformed_dataset)):
     sample = transformed_dataset[i]
+    print(sample)
     break
