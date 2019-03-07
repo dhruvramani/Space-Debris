@@ -58,12 +58,12 @@ class DebrisDataset(Dataset):
             for ele in to_be_deleted:
                 self.elem.pop(ele, None)
                 self.names.remove(ele)
-            file_handler = open('elem_pickled.dat', 'wb+')
+            file_handler = open('../elem_pickled.dat', 'wb+')
             pickle.dump((self.elem, self.names), file_handler)
             file_handler.close()
 
         else:
-            file_handler = open('elem_pickled.dat', 'rb+')
+            file_handler = open('../elem_pickled.dat', 'rb+')
             self.elem, self.names = pickle.load(file_handler)
             file_handler.close()
     
