@@ -14,7 +14,7 @@ from utils import progress_bar
 
 parser = argparse.ArgumentParser(description='PyTorch Space Orbital Path Prediction')
 parser.add_argument('--lr', default=0.01, type=float, help='learning rate') # NOTE change for diff models
-parser.add_argument('--batch_size', default=128, type=int)
+parser.add_argument('--batch_size', default=30, type=int)
 parser.add_argument('--resume', '-r', type=int, default=1, help='resume from checkpoint')
 parser.add_argument('--epochs', '-e', type=int, default=4, help='Number of epochs to train.')
 parser.add_argument('--momentum', '-lm', type=float, default=0.9, help='Momentum.')
