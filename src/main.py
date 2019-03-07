@@ -82,8 +82,6 @@ def train(epoch):
         progress_bar(i, len(dataloader), 'Loss: %.3f' % (train_loss / (i - step + 1)))
 
     step = 0
-    del dataloader
-    del dataset
     print('=> Loss Network : Epoch [{}/{}], Loss:{:.4f}'.format(epoch + 1, 5, train_loss / len(dataloader)))
 
 
