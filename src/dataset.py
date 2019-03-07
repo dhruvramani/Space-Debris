@@ -14,8 +14,6 @@ class DebrisDataset(Dataset):
         self.load = load
 
         str1 = "" 
-        self.ind, self.prev = 0, 0
-
         if(self.load):
             for i in range(1,self.n_rows):
                 str1 = "0"+str(i) if i < 10 else str(i)
@@ -72,13 +70,11 @@ class DebrisDataset(Dataset):
         return len(self.elem)
 
     def __getitem__(self, idx):
-        if(int(idx / 10) != self.ind):
-            self.prev = self.ind
-            self.ind = (self.ind + 1) % len(self.names)
-        debris_name = self.names[self.ind]
+        debris_name = self.names[int(idx / 10)]
         sample = np.array(self.elem[debris_name]).astype(np.float32)
-        sequences = np.asarray([sample[idx : idx + self.steps]])
-        predictions = np.asarray([sample[idx + self.steps: idx + self.steps + 1]])
+        idx = idx % 10 #- (int(idx / 10) * 10)
+        sequences = sample[idx : idx + self.steps]
+        predictions = sample[idx + self.steps: idx + self.steps + 1]
         print(sequences.shape, predictions.shape)
         #for i in range(1, 10):
         #    sequences = np.concatenate((sequences, sample[i : i+ self.steps]), axis=0)
