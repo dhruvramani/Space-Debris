@@ -87,7 +87,7 @@ if __name__ == '__main__':
     dataloader = iter(dataloader)
     for i in range(0, len(dataloader)):
         (sequences, predictions) = next(dataloader)
-        print("Seq&pre")
-        print(len(sequences), len(predictions))
+        print(sequences, predictions)
+        break
         
     
