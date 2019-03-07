@@ -6,7 +6,7 @@ from torch.autograd import Variable
 torch.manual_seed(1)
 
 class SpaceLSTM(torch.nn.Module):
-    def __init__(self, inp_dim=7, op_dim=7, ):
+    def __init__(self, inp_dim=6, op_dim=6):
         super(SpaceLSTM, self).__init__()
         # Hidden I/P : 2 
         self.inp_dim, self.op_dim = inp_dim, op_dim
