@@ -24,7 +24,7 @@ args = parser.parse_args()
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 best_acc, epoch, step = 0, 0, 0
-# MaskedMSE()
+loss_fn = torch.nn.MSELoss()
 print('==> Preparing data..')
 
 # To get logs of current run only
@@ -63,7 +63,6 @@ def train(epoch):
         sequences, predictions = sequences.to(device), predictions.to(device)
         output = net(sequences)
         print(predictions.shape, output.shape)
-        _ = input("")
         optimizer.zero_grad()
         loss = loss_fn(output, predictions)
         loss.backward()
