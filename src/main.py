@@ -63,7 +63,7 @@ def train(epoch):
         sequences, predictions = sequences.to(device), predictions.to(device)
         output = net(sequences)
         optimizer.zero_grad()
-        loss = loss_fn(output, predictions[-1])
+        loss = loss_fn(output[-1], predictions[0])
         loss.backward()
         optimizer.step()
         train_loss += loss.item()
