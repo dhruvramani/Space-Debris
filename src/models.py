@@ -7,7 +7,7 @@ torch.manual_seed(1)
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 class SpaceLSTM(torch.nn.Module):
-    def __init__(self, inp_dim=6, hidden_dim=6, op_dim=6, batch_size=128):
+    def __init__(self, inp_dim=6, hidden_dim=6, op_dim=6, batch_size=30):
         super(SpaceLSTM, self).__init__()
         # Hidden I/P : 2 
         self.batch_size, self.hidden_dim = batch_size, hidden_dim
