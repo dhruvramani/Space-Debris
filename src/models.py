@@ -12,8 +12,7 @@ class SpaceLSTM(torch.nn.Module):
         # Hidden I/P : 2 
         self.batch_size, self.hidden_dim = batch_size, hidden_dim
         self.inp_dim, self.op_dim = inp_dim, op_dim
-        self.hidden = (torch.randn(1, self.batch_size, self.hidden_dim), torch.randn(1, self.batch_size, self.op_dim)) 
-        self.hidden = self.hidden.to(device)
+        self.hidden = (torch.randn(1, self.batch_size, self.hidden_dim).to(device), torch.randn(1, self.batch_size, self.op_dim).to(device)) 
         self.lstm = nn.LSTM(self.inp_dim, self.op_dim)
 
     def forward(self, inp_seq):
