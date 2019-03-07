@@ -72,14 +72,10 @@ class DebrisDataset(Dataset):
     def __getitem__(self, idx):
         debris_name = self.names[int(idx / 10)]
         sample = np.array(self.elem[debris_name]).astype(np.float32)
-        idx = idx % 10 #- (int(idx / 10) * 10)
+        idx = idx % 10
         sequences = sample[idx : idx + self.steps]
         predictions = sample[idx + self.steps: idx + self.steps + 1]
-        print(sequences.shape, predictions.shape)
-        #for i in range(1, 10):
-        #    sequences = np.concatenate((sequences, sample[i : i+ self.steps]), axis=0)
-        #    predictions = np.concatenate((predictions, sample[i + self.steps: i + self.steps + 1]), axis=0)
-        return sequences, predictions #np.asarray(sequences), np.asarray(predictions)
+        return sequences, predictions 
 
     
 if __name__ == '__main__':
@@ -89,3 +85,4 @@ if __name__ == '__main__':
     for i in range(0, len(dataloader)):
         (sequences, predictions) = next(dataloader)
         print(sequences.shape, predictions.shape)
+        break
