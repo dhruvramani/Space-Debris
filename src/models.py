@@ -6,11 +6,12 @@ from torch.autograd import Variable
 torch.manual_seed(1)
 
 class SpaceLSTM(torch.nn.Module):
-    def __init__(self, inp_dim=6, op_dim=6):
+    def __init__(self, inp_dim=6, hidden_dim=4, op_dim=6, batch_size=128):
         super(SpaceLSTM, self).__init__()
         # Hidden I/P : 2 
+        self.batch_size, self.hidden_dim = batch_size, hidden_dim
         self.inp_dim, self.op_dim = inp_dim, op_dim
-        self.hidden = (torch.randn(1, 1, self.inp_dim), torch.randn(1, 1, self.op_dim)) 
+        self.hidden = (torch.randn(1, self.batch_size, self.hidden_size), torch.randn(1, self.batch_size, self.op_dim)) 
         self.lstm = nn.LSTM(self.inp_dim, self.op_dim)
 
     def forward(self, inp_seq):
