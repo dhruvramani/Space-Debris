@@ -78,7 +78,7 @@ class DebrisDataset(Dataset):
         for i in range(0, 10):
             sequences.append(sample[i:i+self.steps])
             predictions.append(sample[i+self.steps: i+self.steps+1])
-        return sequences, predictions
+        return np.asarray(sequences), np.asarray(predictions)
 
     
 if __name__ == '__main__':
