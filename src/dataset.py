@@ -73,12 +73,11 @@ class DebrisDataset(Dataset):
     def __getitem__(self, idx):
         debris_name = self.names[idx]
         sample = np.array(self.elem[debris_name]).astype(np.float32)
-        sequences = []
-        predictions = []
-        print(sample[0 : 0 + self.steps].shape)
+        sequences = sample[0 : self.steps]
+        predictions = sample[self.steps: self.steps + 1]
         for i in range(0, 10):
-            sequences.append(sample[i : i+ self.steps])
-            predictions.append(sample[i + self.steps: i + self.steps + 1])
+            np.concatenate((sequences, sample[i : i+ self.steps]), axis=0)
+            np.concatenate((predictions, sample[i + self.steps: i + self.steps + 1]), axis=0)
         return np.asarray(sequences), np.asarray(predictions)
 
     
