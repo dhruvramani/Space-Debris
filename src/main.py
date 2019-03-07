@@ -61,6 +61,8 @@ def train(epoch):
         sequences, predictions = next(dataloader)
         sequences, predictions = sequences.permute([1, 0, 2]), predictions.permute([1, 0, 2])
         output = net(sequences)
+        print(predictions.shape, output.shape)
+        _ = input("")
         optimizer.zero_grad()
         loss = loss_fn(output, predictions)
         loss.backward()
