@@ -84,7 +84,7 @@ def train(epoch):
     step = 0
     del dataloader
     del dataset
-    print('=> Loss Network : Epoch [{}/{}], Loss:{:.4f}'.format(epoch + 1, 5, train_loss / len(data_loader)))
+    print('=> Loss Network : Epoch [{}/{}], Loss:{:.4f}'.format(epoch + 1, 5, train_loss / len(dataloader)))
 
 
 for epoch in range(epoch, epoch + args.epochs):
