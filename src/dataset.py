@@ -75,9 +75,10 @@ class DebrisDataset(Dataset):
         sample = np.array(self.elem[debris_name]).astype(np.float32)
         sequences = []
         predictions = []
+        print(sample[0 : 0 + self.steps])
         for i in range(0, 10):
-            sequences.append(sample[i:i+self.steps])
-            predictions.append(sample[i+self.steps: i+self.steps+1])
+            sequences.append(sample[i : i+ self.steps])
+            predictions.append(sample[i + self.steps: i + self.steps + 1])
         return np.asarray(sequences), np.asarray(predictions)
 
     
