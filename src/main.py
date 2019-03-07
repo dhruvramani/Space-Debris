@@ -59,7 +59,7 @@ def train(epoch):
     
     for i in range(step, len(dataloader)):
         sequences, predictions = next(dataloader)
-        sequences, predictions = sequences.permute([1, 0, 2]), predictions.permute([1, 0, 2])
+        #sequences, predictions = sequences.permute([1, 0, 2]), predictions.permute([1, 0, 2])
         output = net(sequences)
         print(predictions.shape, output.shape)
         _ = input("")
