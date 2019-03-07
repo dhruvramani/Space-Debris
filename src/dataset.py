@@ -72,7 +72,7 @@ class DebrisDataset(Dataset):
         return len(self.elem)
 
     def __getitem__(self, idx):
-        if(int(idx / 10) != self.prev):
+        if(int(idx / 10) != self.ind):
             self.prev = self.ind
             self.ind = (self.ind + 1) % len(self.names)
         debris_name = self.names[self.ind]
