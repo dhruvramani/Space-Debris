@@ -76,8 +76,8 @@ class DebrisDataset(Dataset):
         sequences = sample[0 : self.steps]
         predictions = sample[self.steps: self.steps + 1]
         for i in range(0, 10):
-            np.concatenate((sequences, sample[i : i+ self.steps]), axis=0)
-            np.concatenate((predictions, sample[i + self.steps: i + self.steps + 1]), axis=0)
+            sequences = np.concatenate((sequences, sample[i : i+ self.steps]), axis=0)
+            predictions = np.concatenate((predictions, sample[i + self.steps: i + self.steps + 1]), axis=0)
         return np.asarray(sequences), np.asarray(predictions)
 
     
