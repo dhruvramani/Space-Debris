@@ -63,8 +63,8 @@ def train(epoch):
         sequences, predictions = sequences.to(device), predictions.to(device)
         output = net(sequences)
         optimizer.zero_grad()
-        loss = loss_fn(output[-1], predictions[0])
-        loss.backward()
+        loss = loss_fn(output[-1], predictions[0]) # Last LSTM output, Prediction
+        loss.backward(retain_graph=True)
         optimizer.step()
         train_loss += loss.item()
 
